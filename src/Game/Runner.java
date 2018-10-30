@@ -3,6 +3,7 @@ package Game;
 import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
+import Rooms.FoodRoom;
 
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public class Runner {
 		{
 			for (int y = 0; y < building[x].length; y++)
 			{
-				building[x][y] = new Room(x,y);
+				building[x][y] = new Room(x,y,false);
 			}
 		}
 		
@@ -28,6 +29,14 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
+
+		int v = (int)(Math.random()*building.length);
+		int w = (int)(Math.random()*building.length);
+		building[v][w] = new FoodRoom(v, w, false);
+		Boolean Fat = false;
+		System.out.println(v);
+		System.out.println(w);
+		System.out.println(Fat);
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
@@ -36,6 +45,10 @@ public class Runner {
 		while(gameOn)
 		{
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			if(Fat = true)
+			{
+				System.out.println("You used a turn to eat more!");
+			}
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
