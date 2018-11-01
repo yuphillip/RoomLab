@@ -14,8 +14,9 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
-		
+		Room[][] building = new Room[9][8];
+		String vrBuilding = "";
+
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
 		{
@@ -24,11 +25,21 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		
+		for (int i = 0;i<building.length;i++)
+		{
+			for(int w = 0;w<building[i].length;w++)
+			{
+				vrBuilding += "[]";
+			}
+			vrBuilding += "\n";
+		}
+		System.out.println(vrBuilding);
+
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
+
 
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);
