@@ -5,8 +5,8 @@ import People.Person;
 
 
 public class FoodRoom extends Room {
-    public FoodRoom(int x, int y, Boolean Fat) {
-        super(x, y, Fat);
+    public FoodRoom(int x, int y) {
+        super(x, y);
 
     }
     public void enterRoom(Person x)
