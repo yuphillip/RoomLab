@@ -4,6 +4,7 @@ import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
 import Rooms.FoodRoom;
+import Game.Board;
 
 import java.util.Scanner;
 
@@ -15,7 +16,6 @@ public class Runner {
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[9][8];
-		String vrBuilding = "";
 
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
@@ -25,15 +25,7 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		for (int i = 0;i<building.length;i++)
-		{
-			for(int w = 0;w<building[i].length;w++)
-			{
-				vrBuilding += "[]";
-			}
-			vrBuilding += "\n";
-		}
-		System.out.println(vrBuilding);
+		System.out.println(Board.buildBoard());
 
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);

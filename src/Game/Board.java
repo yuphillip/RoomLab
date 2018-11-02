@@ -1,16 +1,24 @@
 package Game;
 
+import Game.Runner;
 import Rooms.Room;
 
 public class Board {
-    public static void main(String[] args) {
-        Room[][] building = new Room[9][8];
+    private Room[][] building;
 
-        //Fill the building with normal rooms
-        for (int x = 0; x < building.length; x++) {
-            for (int y = 0; y < building[x].length; y++) {
-                building[x][y] = new Room(x, y);
+    public Board(Room[][]building)
+    {
+        this.building = building;
+    }
+    public String buildBoard()
+    {
+        String vrBuilding = "";
+        for (int i = 0; i < building.length; i++) {
+            for (int w = 0; w < building[i].length; w++) {
+                vrBuilding += "[]";
             }
+            vrBuilding += "\n";
         }
+        return vrBuilding;
     }
 }
