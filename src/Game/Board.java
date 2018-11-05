@@ -13,12 +13,13 @@ public class Board {
     public static String buildBoard()
     {
         String vrBuilding = "";
-        if(!(building[2][1]==null))
-        for (int i = 0; i < building.length; i++) {
-            for (int w = 0; w < building[i].length; w++) {
-                vrBuilding += "[]";
+        if(!(building[2][1]==null)) {
+            for (int i = 0; i < building.length; i++) {
+                for (int w = 0; w < building[i].length; w++) {
+                    vrBuilding += "[]";
+                }
+                vrBuilding += "\n";
             }
-            vrBuilding += "\n";
         }
         return vrBuilding;
     }
