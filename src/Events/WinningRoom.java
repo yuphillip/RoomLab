@@ -1,4 +1,4 @@
-package Rooms;
+package Events;
 
 import Game.Runner;
 import People.Person;

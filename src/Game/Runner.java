@@ -1,12 +1,14 @@
 package Game;
 
+import Events.HealEvent;
 import People.Person;
-import Rooms.Room;
-import Rooms.WinningRoom;
-import Rooms.FoodRoom;
-import Game.Board;
+import Events.Room;
+import Events.WinningRoom;
 
 import java.util.Scanner;
+
+import static Game.Board.buildBoard;
+
 
 public class Runner {
 	
@@ -16,6 +18,7 @@ public class Runner {
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[9][8];
+		int Health = 650;
 
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
@@ -25,7 +28,7 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		System.out.println(Board.buildBoard());
+		System.out.println(buildBoard());
 
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
@@ -35,7 +38,7 @@ public class Runner {
 
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);
-		building[v][w] = new FoodRoom(v, w);
+		building[v][w] = new HealEvent(v,w,Health);
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
