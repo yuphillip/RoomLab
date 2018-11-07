@@ -20,9 +20,11 @@ public class HealEvent extends Room
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
         Health +=100;
-
+        if(Health > 650)
+        {
+            Health = 650;
+        }
         System.out.println("You got a free heal of 100 health.");
-        Runner.gameOff();
     }
 
 

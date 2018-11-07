@@ -3,16 +3,20 @@ package Game;
 import Events.Room;
 
 public class Board {
-    private static Room[][] building;
+    private Room[][] building;
 
     public Board(Room[][]building)
     {
         this.building = building;
     }
-    public static String buildBoard()
+    public void buildBoard()
+    {
+
+    }
+    public String printBoard()
     {
         String vrBuilding = "";
-        if(!(building[2][1]==null))
+        if(!(building[0][0]==null))
         {
             for (int i = 0; i < building.length; i++) {
                 for (int w = 0; w < building[i].length; w++) {

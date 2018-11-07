@@ -7,7 +7,6 @@ import Events.WinningRoom;
 
 import java.util.Scanner;
 
-import static Game.Board.buildBoard;
 
 
 public class Runner {
@@ -28,7 +27,6 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		System.out.println(buildBoard());
 
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
@@ -39,6 +37,7 @@ public class Runner {
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);
 		building[v][w] = new HealEvent(v,w,Health);
+		Room[][] HealEvent = new Room[v][w];
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
