@@ -15,7 +15,6 @@ public class HealEvent extends Room
 
     @Override
     public void enterRoom(Person x) {
-
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
@@ -24,7 +23,8 @@ public class HealEvent extends Room
         {
             Health = 650;
         }
-        System.out.println("You got a free heal of 100 health.");
+        System.out.println("You found a Heal Room!");
+        System.out.println("You got a free heal of 100 health. You now have " + Health + " " + "health left.");
     }
 
 

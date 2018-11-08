@@ -1,5 +1,6 @@
 package Game;
 
+import Events.BattleEvent;
 import Events.HealEvent;
 import People.Person;
 import Events.Room;
@@ -16,7 +17,8 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[9][8];
+		String vrBuilding = "";
+		Room[][] building = new Room[4][6];
 		int Health = 650;
 
 		//Fill the building with normal rooms
@@ -27,6 +29,15 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
+		for (int i = 0; i < building.length; i++) {
+			for (int w = 0; w < building[i].length; w++) {
+				vrBuilding += "[]";
+			}
+			vrBuilding += "\n";
+		}
+		System.out.println(vrBuilding);
+		System.out.println("You have 650 health.");
+
 
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
@@ -37,7 +48,15 @@ public class Runner {
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);
 		building[v][w] = new HealEvent(v,w,Health);
-		Room[][] HealEvent = new Room[v][w];
+
+		for(int i = 0;i<=2;i++)
+		{
+			int b = (int) (Math.random() * building.length);
+			int e = (int) (Math.random() * building.length);
+			building[b][e] = new BattleEvent(b, e, Health);
+			System.out.println(b);
+			System.out.println(e);
+		}
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
@@ -45,7 +64,7 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Where would you like to move? (Use WASD to move.)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -72,7 +91,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -83,7 +102,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -107,7 +126,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
