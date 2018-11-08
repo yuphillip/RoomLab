@@ -44,15 +44,27 @@ public class Runner {
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
 
-
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);
+		if(v==x && w==y)
+		{
+			while(v==x && w==y)
+			{
+				v = (int)(Math.random()*building.length);
+				w = (int)(Math.random()*building.length);
+			}
+		}
 		building[v][w] = new HealEvent(v,w,Health);
 
 		for(int i = 0;i<=2;i++)
 		{
 			int b = (int) (Math.random() * building.length);
 			int e = (int) (Math.random() * building.length);
+			if((b==x && e==y)||(b==v && e==w))
+			{
+				b = (int) (Math.random() * building.length);
+				e = (int) (Math.random() * building.length);
+			}
 			building[b][e] = new BattleEvent(b, e, Health);
 		}
 		 
