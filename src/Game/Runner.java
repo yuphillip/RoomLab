@@ -18,7 +18,7 @@ public class Runner {
 	public static void main(String[] args)
 	{
 		String vrBuilding = "";
-		Room[][] building = new Room[4][6];
+		Room[][] building = new Room[5][5];
 		int Health = 650;
 
 		//Fill the building with normal rooms
@@ -42,7 +42,12 @@ public class Runner {
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
+		if (x==0 && y==0)
+		{
+			x = (int)(Math.random()*building.length);
+			y = (int)(Math.random()*building.length);
+		}
+		building[x][y] = new WinningRoom(x, y, Health);
 
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);

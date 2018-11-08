@@ -5,9 +5,10 @@ import People.Person;
 
 public class WinningRoom extends Room
 {
-
-	public WinningRoom(int x, int y) {
+	private int Health;
+	public WinningRoom(int x, int y, int Health) {
 		super(x, y);
+		this.Health = Health;
 
 	}
 
@@ -21,7 +22,7 @@ public class WinningRoom extends Room
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		System.out.println("You found the winning room! Ten points for Gryffindor.");
+		System.out.println("You found the winning room! You ended this map with" + " " + Health + " " + "left.");
 		Runner.gameOff();
 	}
 	
