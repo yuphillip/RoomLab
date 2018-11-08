@@ -54,8 +54,6 @@ public class Runner {
 			int b = (int) (Math.random() * building.length);
 			int e = (int) (Math.random() * building.length);
 			building[b][e] = new BattleEvent(b, e, Health);
-			System.out.println(b);
-			System.out.println(e);
 		}
 		 
 		 //Setup player 1 and the input scanner
