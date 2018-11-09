@@ -2,10 +2,10 @@
 package Game;
 
 import Events.BattleEvent;
+import Events.Boss;
 import Events.HealEvent;
 import People.Person;
 import Events.Room;
-import Events.WinningRoom;
 
 import java.util.Scanner;
 
@@ -19,8 +19,9 @@ public class Runner {
 	public static void main(String[] args)
 	{
 		String vrBuilding = "";
-		Room[][] building = new Room[5][5];
+		Room[][] building = new Room[7][7];
 		int Health = 650;
+		int Gold = 0;
 
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
@@ -30,14 +31,15 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		for (int i = 0; i < building.length; i++) {
-			for (int w = 0; w < building[i].length; w++) {
+		for (int i = 0; i < building.length-1; i++) {
+			for (int w = 0; w < building[i].length-1; w++) {
 				vrBuilding += "[]";
 			}
 			vrBuilding += "\n";
 		}
 		System.out.println(vrBuilding);
-		System.out.println("You have 650 health.");
+		System.out.println("You have" + " " + Health + " " + "health and" + " " + Gold + " " + "gold. Fight battles " +
+				"risking your life to gain gold, buy a better weapon and defeat the boss.");
 
 
 		//Create a random winning room.
@@ -48,7 +50,7 @@ public class Runner {
 			x = (int)(Math.random()*building.length);
 			y = (int)(Math.random()*building.length);
 		}
-		building[x][y] = new WinningRoom(x, y, Health);
+		building[x][y] = new Boss(x, y, Health);
 
 		int v = (int)(Math.random()*building.length);
 		int w = (int)(Math.random()*building.length);
@@ -62,17 +64,27 @@ public class Runner {
 		}
 		building[v][w] = new HealEvent(v,w,Health);
 
-		for(int i = 0;i<=2;i++)
+		int b1 = 0;
+		int e1 = 0;
+		for(int i = 0;i<=4;i++)
 		{
 			int b = (int) (Math.random() * building.length);
 			int e = (int) (Math.random() * building.length);
-			if((b==x && e==y)||(b==v && e==w))
+			while((b==x && e==y)||(b==v && e==w))
 			{
 				b = (int) (Math.random() * building.length);
 				e = (int) (Math.random() * building.length);
 			}
+			while(b1 == b && e1 == e)
+			{
+				b = (int) (Math.random() * building.length);
+				e = (int) (Math.random() * building.length);
+			}
+			b1 = b;
+			e1 = e;
 			building[b][e] = new BattleEvent(b, e, Health);
 		}
+
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
@@ -89,6 +101,10 @@ public class Runner {
 			}
 			else {
 				System.out.println("Please choose a valid move.");
+			}
+			if (Health == 0)
+			{
+				gameOff();
 			}
 			
 			

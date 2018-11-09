@@ -18,7 +18,7 @@ public class HealEvent extends Room
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
-        Health +=100;
+        Health = Health + 50;
         if(Health > 650)
         {
             Health = 650;
@@ -26,6 +26,5 @@ public class HealEvent extends Room
         System.out.println("You found a Heal Room!");
         System.out.println("You got a free heal of 100 health. You now have " + Health + " " + "health left.");
     }
-
 
 }

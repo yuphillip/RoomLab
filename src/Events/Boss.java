@@ -3,10 +3,10 @@ package Events;
 import Game.Runner;
 import People.Person;
 
-public class WinningRoom extends Room
+public class Boss extends Room
 {
 	private int Health;
-	public WinningRoom(int x, int y, int Health) {
+	public Boss(int x, int y, int Health) {
 		super(x, y);
 		this.Health = Health;
 
@@ -22,8 +22,9 @@ public class WinningRoom extends Room
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		System.out.println("You found the winning room! You ended this map with" + " " + Health + " " + "left.");
-		Runner.gameOff();
+		System.out.println("You found the Boss room! Hope you have a weapon!");
+
+
 	}
 	
 
